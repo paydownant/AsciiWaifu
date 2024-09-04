@@ -8,7 +8,7 @@ AUI :: ~AUI() {
 }
 
 void AUI :: run(std::string file_path, FILE *output_ptr, auint target_px) {
-  if (!createVertexBuffer(file_path, target_px, 0.5)) {
+  if (!createVertexBuffer(file_path, target_px, 0.4)) {
     error_callback(1, "Failed to create vertex buffer");
     exit(1);
   }
