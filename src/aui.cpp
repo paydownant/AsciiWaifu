@@ -1,5 +1,7 @@
 #include "aui.h"
 
+#include <math.h>
+
 AUI :: AUI() {
 }
 
@@ -25,7 +27,7 @@ void AUI :: run(std::string file_path, FILE *output_ptr, auint target_px) {
 void AUI :: drawAUI(FILE *output_ptr) {
   for (auint i = 0; i < height; ++i) {
     for (auint j = 0; j < width; ++j) {
-      u_int points_index = (u_int)(vertices[i * width + j].level * 8);
+      u_int points_index = (u_int)(pow(vertices[i * width + j].level, 1.2) * 8);
       fprintf(output_ptr, "%c", points[points_index]);
     }
     fprintf(output_ptr, "\n");
@@ -58,7 +60,7 @@ bool AUI :: createVertexBuffer(std::string file_path, u_int target_width_px, flo
       u_int dataIndex = (u_int)((float)i / ratio_height) * img.w + (u_int)((float)j / ratio_width);
       float bw_level = (float)img.data[dataIndex] / 256;
       float threshold = 0.01;
-      if (bw_level > threshold) {
+      if (bw_level > threshold && bw_level + threshold < 1.0) {
         vertices[index].level = bw_level; // later apply gamma curve here
       } else {
         vertices[index].level = 0;
