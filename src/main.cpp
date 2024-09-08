@@ -7,5 +7,7 @@ int main(int argc, char **argv) {
   }
   
   AUI *app = new AUI();
-  app->run("../images/yuno.png", ofp, 64);
+  app->run("../images/yuno.png", stdout, 89);
+
+  fclose(ofp);
 }
