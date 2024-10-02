@@ -2,7 +2,7 @@ Convert your waifu.image to ascii and output to your desired file stream!
 
 Supports ascii resolution resizing, aspect ratio adjustment, and gamma correction.
 
-```sh
+```
 Read: ../images/image.png
 Loaded 300 x 268 Image
 Created 88 x 31 Buffer
